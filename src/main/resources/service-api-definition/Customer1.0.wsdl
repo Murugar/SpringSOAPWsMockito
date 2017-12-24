@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:customer="http://ws/namespace/customerservice/"
+                  xmlns:general="http://ws/namespace/customerservice/general"
+                  xmlns:exception="http://ws/namespace/customerservice/exception"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  targetNamespace="http://ws/namespace/customerservice/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <s:schema xmlns="http://www.w3.org/2001/XMLSchema"
+                  xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://ws/namespace/customerservice/"
+                  attributeFormDefault="qualified"
+                  elementFormDefault="qualified">
+            <s:include schemaLocation="Customer1.0.xsd"/>
+        </s:schema>
+    </wsdl:types>
+
+
+  
+    <wsdl:message name="GetCustomerByVATIn">
+        <wsdl:part name="parameters" element="general:GetCustomerByVAT"/>
+    </wsdl:message>
+    <wsdl:message name="GetCustomerByVATOut">
+        <wsdl:part name="parameters" element="general:GetCustomerByVATResponse"/>
+    </wsdl:message>
+  
+    <wsdl:message name="GetCustomersByNameIn">
+        <wsdl:part name="parameters" element="general:GetCustomersByName"/>
+    </wsdl:message>
+  
+    <wsdl:message name="GetCustomersIn">
+        <wsdl:part name="parameters" element="general:GetCustomers"/>
+    </wsdl:message>
+    <wsdl:message name="GetCustomersOut">
+        <wsdl:part name="parameters" element="general:GetCustomersResponse"/>
+    </wsdl:message>
+  
+  
+    <wsdl:message name="AddCustomerIn">
+        <wsdl:part name="parameters" element="general:AddCustomer"/>
+    </wsdl:message>
+    <wsdl:message name="AddCustomerOut">
+        <wsdl:part name="parameters" element="general:AddCustomerResponse"/>
+    </wsdl:message>
+  
+  
+    <wsdl:message name="DeleteCustomerIn">
+        <wsdl:part name="parameters" element="general:DeleteCustomer"/>
+    </wsdl:message>
+    <wsdl:message name="DeleteCustomerOut">
+        <wsdl:part name="parameters" element="general:DeleteCustomerResponse"/>
+    </wsdl:message>
+  
+  
+    <wsdl:message name="CustomerException">
+        <wsdl:part name="parameters" element="exception:CustomerException" />
+    </wsdl:message>
+  
+  
+    <wsdl:portType name="CustomerService">
+
+    
+    
+        <wsdl:operation name="GetCustomerByVAT">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Customer By VAT.</wsdl:documentation>
+            <wsdl:input message="customer:GetCustomerByVATIn"/>
+            <wsdl:output message="customer:GetCustomerByVATOut"/>
+            <wsdl:fault name="CustomerException" message="customer:CustomerException"/>
+        </wsdl:operation>
+    
+        <wsdl:operation name="GetCustomersByName">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Customers By Name.</wsdl:documentation>
+            <wsdl:input message="customer:GetCustomersByNameIn"/>
+            <wsdl:output message="customer:GetCustomersOut"/>
+            <wsdl:fault name="CustomerException" message="customer:CustomerException"/>
+        </wsdl:operation>
+    
+    
+        <wsdl:operation name="GetCustomers">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get list of customers.</wsdl:documentation>
+            <wsdl:input message="customer:GetCustomersIn"/>
+            <wsdl:output message="customer:GetCustomersOut"/>
+            <wsdl:fault name="CustomerException" message="customer:CustomerException"/>
+        </wsdl:operation>
+    
+        <wsdl:operation name="AddCustomer">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add customer.</wsdl:documentation>
+            <wsdl:input message="customer:AddCustomerIn"/>
+            <wsdl:output message="customer:AddCustomerOut"/>
+            <wsdl:fault name="CustomerException" message="customer:CustomerException"/>
+        </wsdl:operation>
+    
+    
+        <wsdl:operation name="DeleteCustomer">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete customer by nif..</wsdl:documentation>
+            <wsdl:input message="customer:DeleteCustomerIn"/>
+            <wsdl:output message="customer:DeleteCustomerOut"/>
+            <wsdl:fault name="CustomerException" message="customer:CustomerException"/>
+        </wsdl:operation>
+    
+    
+    
+    </wsdl:portType>
+    <wsdl:binding name="CustomerService" type="customer:CustomerService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    
+        <wsdl:operation name="GetCustomerByVAT">
+            <soap:operation soapAction="http://ws/namespace/customerservice/GetCustomerByVAT" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CustomerException">
+                <soap:fault name="CustomerException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    
+        <wsdl:operation name="GetCustomersByName">
+            <soap:operation soapAction="http://ws/namespace/customerservice/GetCustomersByName" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CustomerException">
+                <soap:fault name="CustomerException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    
+        <wsdl:operation name="GetCustomers">
+            <soap:operation soapAction="http://ws/namespace/customerservice/GetCustomers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CustomerException">
+                <soap:fault name="CustomerException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    
+        <wsdl:operation name="AddCustomer">
+            <soap:operation soapAction="http://ws/namespace/customerservice/AddCustomer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CustomerException">
+                <soap:fault name="CustomerException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    
+        <wsdl:operation name="DeleteCustomer">
+            <soap:operation soapAction="http://ws/namespace/customerservice/DeleteCustomer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CustomerException">
+                <soap:fault name="CustomerException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    
+    
+    </wsdl:binding>
+    <wsdl:service name="Customer">
+        <wsdl:port name="CustomerService" binding="customer:CustomerService">
+            <soap:address location="http://ws:8080/soap-api/CustomerSoapService_1.0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

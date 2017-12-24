@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:customer="http://ws/namespace/customerservice/"
+          xmlns:s="http://www.w3.org/2001/XMLSchema"
+          xmlns:datatypes="http://ws/namespace/customerservice/datatypes"
+          xmlns:exception="http://ws/namespace/customerservice/exception"
+          targetNamespace="http://ws/namespace/customerservice/"
+          elementFormDefault="qualified"
+          version="1.0">
+      
+    <s:import namespace="http://ws/namespace/customerservice/general"
+              schemaLocation="Customer-Schemes/customer-general.xsd"/>
+                
+    <s:import namespace="http://ws/namespace/customerservice/exception"
+              schemaLocation="Customer-Schemes/customer-exception.xsd"/>          
+      
+</s:schema>

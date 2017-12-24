@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://ws/namespace/customerservice/exception"
+          xmlns:exception="http://ws/namespace/customerservice/exception"
+          targetNamespace="http://ws/namespace/customerservice/exception"
+          elementFormDefault="qualified"
+          version="1.0">
+      
+    <s:element name="CustomerException">
+        <s:complexType>
+            <s:sequence>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+</s:schema>

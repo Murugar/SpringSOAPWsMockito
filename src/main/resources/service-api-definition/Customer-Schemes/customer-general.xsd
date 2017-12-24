@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://ws/namespace/customerservice/general"
+          xmlns:datatypes="http://ws/namespace/customerservice/datatypes"
+          xmlns:general="http://ws/namespace/customerservice/general"
+          targetNamespace="http://ws/namespace/customerservice/general"
+          elementFormDefault="qualified"
+          version="1.0">
+      
+    <s:import namespace="http://ws/namespace/customerservice/datatypes"
+              schemaLocation="customer-datatypes.xsd"/>
+
+
+    <s:element name="GetCustomerByVAT">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="CustomerRequest" type="general:CustomerRequest"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    
+    <s:complexType name="CustomerRequest">
+        <s:sequence>
+            <s:element name="VAT" minOccurs="1" maxOccurs="1"  type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+      
+    <s:element name="GetCustomerByVATResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="GetCustomerByVATResult" type="general:CustomerReturn"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+      
+    <s:complexType name="CustomerReturn">
+        <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerResult" type="datatypes:Customer"/>
+        </s:sequence>
+    </s:complexType>
+    
+    
+    
+    
+    <s:element name="GetCustomersByName">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="CustomersRequest" type="general:CustomersRequest"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    
+    <s:complexType name="CustomersRequest">
+        <s:sequence>
+            <s:element name="Name" minOccurs="1" maxOccurs="1"  type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+      
+
+      
+    <s:complexType name="CustomersReturn">
+        <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomersResult" type="datatypes:ArrayOfCustomer"/>
+        </s:sequence>
+    </s:complexType>
+      
+      
+      
+      
+    <s:element name="GetCustomers">
+        <s:complexType>
+            <s:sequence>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    
+
+      
+    <s:element name="GetCustomersResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="GetCustomersResult" type="general:CustomersReturn"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+      
+
+      
+      
+    <s:element name="AddCustomer">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="AddCustomerRequest" type="general:AddCustomerRequest"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+      
+    <s:complexType name="AddCustomerRequest">
+        <s:sequence>
+            <s:element name="Customer" type="datatypes:Customer"/>
+        </s:sequence>
+    </s:complexType>
+    
+    <s:element name="AddCustomerResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="AddCustomerResult" type="general:AddCustomerReturn"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    
+    <s:complexType name="AddCustomerReturn">
+        <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    
+    
+    
+    
+    
+    
+    <s:element name="DeleteCustomer">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="DeleteCustomerRequest" type="general:DeleteCustomerRequest"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+      
+    <s:complexType name="DeleteCustomerRequest">
+        <s:sequence>
+            <s:element name="VAT" minOccurs="1" maxOccurs="1" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    
+    <s:element name="DeleteCustomerResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="DeleteCustomerResult" type="general:DeleteCustomerReturn"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    
+    <s:complexType name="DeleteCustomerReturn">
+        <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    
+    
+
+      
+      
+      
+</s:schema>
